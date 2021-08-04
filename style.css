@@ -1,0 +1,215 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+#dispftVal {
+    font-weight: bold;
+}
+
+#expoftVal {
+    font-weight: bold;
+}
+
+.tablinks {
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.subtablinks {
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+#fofTab {
+    background-color: #00BFFF;
+}
+
+#fogTab {
+    background-color: #FF00FF;
+}
+
+#fohTab {
+    background-color: #32CD32;
+}
+
+#fTable {
+    width: 100%;
+    border: solid 1px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.column1 {
+    width: 20%;
+}
+
+.column2 {
+    width: 40%;
+}
+
+.column3 {
+    width: 40%;
+}
+
+#aVarRow {
+    height: 32px;
+}
+
+#bVarRow {
+    height: 32px;
+}
+
+#cVarRow {
+    height: 32px;
+}
+
+#dVarRow {
+    height: 32px;
+}
+
+.formula {
+    text-align: center;
+    font-size: 27px;
+}
+
+#dispTime {
+    font-weight: bold;
+}
+
+#expoTime {
+    font-weight: bold;
+}
+
+.increaseButton {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    border-color: black;
+}
+
+#dispAVarVal {
+    font-weight: bold;
+}
+
+#expoAVarVal {
+    font-weight: bold;
+}
+
+#dispRawAVarVal {
+    font-weight: bold;
+}
+
+#expoRawAVarVal {
+    font-weight: bold;
+}
+
+#dispAVarCost {
+    font-weight: bold;
+}
+
+#expoAVarCost {
+    font-weight: bold;
+}
+
+#dispBVarVal {
+    font-weight: bold;
+}
+
+#expoBVarVal {
+    font-weight: bold;
+}
+
+#dispRawBVarVal {
+    font-weight: bold;
+}
+
+#expoRawBVarVal {
+    font-weight: bold;
+}
+
+#dispBVarCost {
+    font-weight: bold;
+}
+
+#expoBVarCost {
+    font-weight: bold;
+}
+
+#dispCVarVal {
+    font-weight: bold;
+}
+
+#expoCVarVal {
+    font-weight: bold;
+}
+
+#dispRawCVarVal {
+    font-weight: bold;
+}
+
+#expoRawCVarVal {
+    font-weight: bold;
+}
+
+#dispCVarCost {
+    font-weight: bold;
+}
+
+#expoCVarCost {
+    font-weight: bold;
+}
+
+#dispDVarVal {
+    font-weight: bold;
+}
+
+#expoDVarVal {
+    font-weight: bold;
+}
+
+#dispRawDVarVal {
+    font-weight: bold;
+}
+
+#expoRawDVarVal {
+    font-weight: bold;
+}
+
+#dispDVarCost {
+    font-weight: bold;
+}
+
+#expoDVarCost {
+    font-weight: bold;
+}
+
+#studyButton {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    background-color: #87CEFA;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.researchButton {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    height: 150px;
+    width: 250px;
+    border-radius: 5px;
+    border: solid 3px;
+    border-color: black;
+    color: black;
+}
+
+.resTable {
+    margin-left: auto;
+    margin-right: auto;
+}

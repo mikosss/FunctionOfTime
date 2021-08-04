@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function of Time (Pre-release)</title>
+    <link rel="stylesheet" href="tab-functions/tab-function.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="text-align:center;">
+        <span style="font-size: 27px;">f(t) = <span id="dispftVal">1</span><span id="expoftVal">1</span></span>
+        <br>
+        (+<span id="dispAdditive">0</span><span id="expoAdditive">0</span>/tick)
+        <br>
+        Tickspeed = <span id="dispTickspeed">1,000</span> ms
+    </div>
+    <br>
+    <div style="text-align:center;">
+        <button class="tablinks" onclick="openTab(event, 'Functions')">Functions</button>
+        <button class="tablinks" onclick="openTab(event, 'Research')"><span id="unlockResearchTabText"> --- </span><span id="researchTabText">Research</span></span></button>
+        <button class="tablinks" onclick="openTab(event, 'Options')">Options</button>
+    </div>
+    <br>
+    <div id="Functions" class="tabcontent">
+        <div style="text-align:center;">
+            <button id="fofTab" class="subtablinks" onclick="opensubTab(event, 'FunctionF')">Function of "f"</button>
+            <button id="fogTab" class="subtablinks" onclick="opensubTab(event, 'FunctionG')">---</button>
+            <button id="fohTab" class="subtablinks" onclick="opensubTab(event, 'FunctionH')">---</button>
+        </div>
+        <br>
+        <div id="FunctionF" class="subtabcontent">
+            <div class="formula">f(t+1) = f(t) + a<span id="bText">b</span><span id="cText">c</span><span id="dText">d</span></div>
+            <div style="text-align: center;">f(t) → f(t+1) = 1 tick</div>
+            <div style="text-align: center;">t = <span id="dispTime">0</span><span id="expoTime">0</span></div>
+            <br>
+            <div>
+                <table id="fTable">
+                    <tr id="aVarRow">
+                        <td class="column1">"a" Variable</td>
+                        <td class="column2">"a" Variable value: a = <span id="dispAVarVal">0</span><span id="expoAVarVal">0</span> (<span id="dispRawAVarVal">0</span><span id="expoRawAVarVal">0</span>)</td>
+                        <td class="column3"><button onclick="aVarUp()" class="increaseButton" id="aVarUp">Increase value</button> Cost: -f(t) = <span id="dispAVarCost">1</span><span id="expoAVarCost">1</span></td>
+                    </tr>
+                    <tr id="bVarRow">
+                        <td class="column1">"b" Variable</td>
+                        <td class="column2">"b" Variable value: b = <span id="dispBVarVal">1</span><span id="expoBVarVal">1</span> (<span id="dispRawBVarVal">1</span><span id="expoRawBVarVal">1</span>)</td>
+                        <td class="column3"><button onclick="bVarUp()" class="increaseButton" id="bVarUp">Increase value</button> Cost: -f(t) = <span id="dispBVarCost">100</span><span id="expoBVarCost">100</span></td>
+                    </tr>
+                    <tr id="cVarRow">
+                        <td class="column1">"c" Variable</td>
+                        <td class="column2">"c" Variable value: c = <span id="dispCVarVal">1</span><span id="expoCVarVal">1</span> (<span id="dispRawCVarVal">1</span><span id="expoRawCVarVal">1</span>)</td>
+                        <td class="column3"><button onclick="cVarUp()" class="increaseButton" id="cVarUp">Increase value</button> Cost: -f(t) = <span id="dispCVarCost">10,000</span><span id="expoCVarCost">10,000</span></td>
+                    </tr>
+                    <tr id="dVarRow">
+                        <td class="column1">"d" Variable</td>
+                        <td class="column2">"d" Variable value: d = <span id="dispDVarVal">1</span><span id="expoDVarVal">1</span> (<span id="dispRawDVarVal">1</span><span id="expoRawDVarVal">1</span>)</td>
+                        <td class="column3"><button onclick="dVarUp()" class="increaseButton" id="dVarUp">Increase value</button> Cost: -f(t) = <span id="dispDVarCost">1,000,000</span><span id="expoDVarCost">1,000,000</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="FunctionG" class="subtabcontent">
+            comming soon...
+        </div>
+        <div id="FunctionH" class="subtabcontent">
+            comming soon :c
+        </div>
+    </div>
+    <div id="Research" class="tabcontent">
+        <div style="text-align: center; font-weight: bold;" id="unlockResearch"> Req: f(t) ≥ 100,000</div>
+        <div id="researchTab">
+            <div style="text-align: center; font-size: 21px;"><span id="dispStudyPoint">0</span><span id="expoStudyPoint">0</span> Study Points</div>
+            <div style="text-align: center; font-size: 16px;">
+                <button id="studyButton" onclick="study()">Study</button><br>Study Chance: <span id="studyChance">10</span>% <span id="lazyText">- cuz u lazy 3:)</span>
+                <div id="dispStudy"></div>
+            </div>
+            <br>
+            <div>
+                <table class="resTable">
+                    <tr>
+                         <td>
+                            <button onclick="res01()" class="researchButton" id="res0.1">
+                                +1% Study Chance
+                                <br>
+                                -<span id="dispRes01Cost">10</span> Study Points 
+                                <br>
+                                (<span id="res01Amt">0</span>/40)
+                            </button>
+                        </td>
+                        <td>
+                            <button onclick="res02()" class="researchButton" id="res0.2">
+                                +10% Study Power
+                                <br>
+                                -<span id="dispRes02Cost">10</span><span id="expoRes02Cost">10</span> Study Points
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="resTable">
+                    <tr>
+                        <td><button onclick="res1()" class="researchButton" id="res1">+1% "a, b, c, & d" Variable Value <br>-<span id="dispRes1Cost">5</span><span id="expoRes1Cost">5</span> Study Points</button></td>
+                        <td><button onclick="res2()" class="researchButton" id="res2">×0.9 tickspeed <br> -<span id="dispRes2Cost">100</span> Study Points</button></td>
+                        <td><button class="researchButton" id="res3">RESEARCH 3</button></td>
+                        <td><button class="researchButton" id="res4">RESEARCH 4</button></td>
+                        <td><button class="researchButton" id="res5">RESEARCH 5</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="researchButton" id="res6">RESEARCH 6</button></td>
+                        <td><button class="researchButton" id="res7">RESEARCH 7</button></td>
+                        <td><button class="researchButton" id="res8">RESEARCH 8</button></td>
+                        <td><button class="researchButton" id="res9">RESEARCH 9</button></td>
+                        <td><button class="researchButton" id="res10">RESEARCH 10</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="researchButton" id="res11">RESEARCH 11</button></td>
+                        <td><button class="researchButton" id="res12">RESEARCH 12</button></td>
+                        <td><button class="researchButton" id="res13">RESEARCH 13</button></td>
+                        <td><button class="researchButton" id="res14">RESEARCH 14</button></td>
+                        <td><button class="researchButton" id="res15">RESEARCH 15</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="Options" class="tabcontent">
+        Options
+        <br>
+        version pre-release 0.0.0 d-20
+    </div>
+    <script src="tab-functions/tab-function.js" charset="utf-8" type="text/javascript"></script>
+    <script src="game-data.js" charset="utf-8" type="text/javascript"></script>
+    <script src="main/main-layer0.js" charset="utf-8" type="text/javascript"></script>
+    <script src="main/main-layer1.js" charset="utf-8" type="text/javascript"></script>
+    <script src="main/main-research.js" charset="utf-8" type="text/javascript"></script>
+</body>
+</html>

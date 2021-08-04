@@ -1,0 +1,21 @@
+
+.tab {
+    overflow: hidden;
+  }
+  
+.tab button {
+    font-size: 16px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+.tabcontent {
+    display: none;
+    border-top: none;
+  }
+  
+.subtabcontent {
+  display: none;
+  border-top: none;
+}
