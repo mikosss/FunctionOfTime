@@ -54,6 +54,9 @@ var gameData = {
     rawStudyPower: 1,
     dispStudyPower: 1,
     studyChance: 10,
+    resAdditive: 0,
+    dispResAdditive: 0,
+    expoResAdditive: 0,
     res01Amt: 0,
     res01Cost: 10,
     dispRes01Cost: 10,
@@ -61,6 +64,10 @@ var gameData = {
     res02Cost: 10,
     dispRes02Cost: 10,
     expoRes02Cost: 10,
+    res03Boost: 0,
+    res03Amt: 0,
+    res03Cost: 100,
+    dispRes03Cost: 100,
     res1Boost: 1,
     res1Cost: 5,
     dispRes1Cost: 5,
@@ -68,6 +75,14 @@ var gameData = {
     res2Amt: 0,
     res2Cost: 100,
     dispRes2Cost: 100,
+    res3Boost: 0,
+    res3Amt: 0,
+    res3Cost: 250,
+    dispRes3Cost: 250,
+    res4Boost: 0,
+    res4Amt: 0,
+    res4Cost: 1000,
+    dispRes4Cost: 1000,
 }
 
 document.getElementById("expoftVal").style.display = "none"         //layer:0
@@ -93,9 +108,12 @@ document.getElementById("expoRawDVarVal").style.display = "none"
 document.getElementById("expoDVarCost").style.display = "none"
 document.getElementById("researchTabText").style.display = "none"   //research
 document.getElementById("researchTab").style.display = "none"
+document.getElementById("resAdditiveText").style.display = "none"
+document.getElementById("expoResAdditive").style.display = "none"
 document.getElementById("expoStudyPoint").style.display = "none"
 document.getElementById("expoRes02Cost").style.display = "none"
 document.getElementById("expoRes1Cost").style.display = "none"
+document.getElementById("res3Text").style.display = "none"
 document.getElementById("fogTab").style.display = "none"            //layer:2
 document.getElementById("fohTab").style.display = "none"            //layer:3
 
@@ -143,6 +161,7 @@ function buttonColor() {
     }
     if (gameData.res01Amt >= 40) {
         document.getElementById("res0.1").style.backgroundColor = "#7CFC00"
+        document.getElementById("res0.1").style.cursor = "default"
     }
     if (gameData.studyPoint >= gameData.res02Cost) {
         document.getElementById("res0.2").style.backgroundColor = "#FFFFFF"
@@ -151,6 +170,18 @@ function buttonColor() {
     if (gameData.studyPoint < gameData.res02Cost) {
         document.getElementById("res0.2").style.backgroundColor = "#808080"
         document.getElementById("res0.2").style.cursor = "default"
+    }
+    if (gameData.studyPoint >= gameData.res03Cost) {
+        document.getElementById("res0.3").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res0.3").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res03Cost) {
+        document.getElementById("res0.3").style.backgroundColor = "#808080"
+        document.getElementById("res0.3").style.cursor = "default"
+    }
+    if (gameData.res03Amt >= 1) {
+        document.getElementById("res0.3").style.backgroundColor = "#7CFC00"
+        document.getElementById("res0.3").style.cursor = "default"
     }
     if (gameData.studyPoint >= gameData.res1Cost) {
         document.getElementById("res1").style.backgroundColor = "#FFFFFF"
@@ -170,6 +201,32 @@ function buttonColor() {
     }
     if (gameData.res2Amt >= 1) {
         document.getElementById("res2").style.backgroundColor = "#7CFC00"
+        document.getElementById("res2").style.cursor = "default"
+    }
+    if (gameData.studyPoint >= gameData.res3Cost) {
+        document.getElementById("res3").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res3").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res3Cost) {
+        document.getElementById("res3").style.backgroundColor = "#808080"
+        document.getElementById("res3").style.cursor = "default"
+    }
+    if (gameData.res3Amt >= 1) {
+        document.getElementById("res3").style.backgroundColor = "#7CFC00"
+        document.getElementById("res3").style.cursor = "default"
+        document.getElementById("res3Text").style.display = "inline"
+    }
+    if (gameData.studyPoint >= gameData.res4Cost) {
+        document.getElementById("res4").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res4").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res4Cost) {
+        document.getElementById("res4").style.backgroundColor = "#808080"
+        document.getElementById("res4").style.cursor = "default"
+    }
+    if (gameData.res4Amt >= 1) {
+        document.getElementById("res4").style.backgroundColor = "#7CFC00"
+        document.getElementById("res4").style.cursor = "default"
     }
 }
 
@@ -199,7 +256,17 @@ function unlocks() {
     if (gameData.res01Amt >= 40) {
         document.getElementById("res0.1").disabled = true;
     }
+    if (gameData.res03Amt >= 1) {
+        document.getElementById("res0.3").disabled = true;
+        document.getElementById("resAdditiveText").style.display = "inline"
+    }
     if (gameData.res2Amt >= 1) {
+        document.getElementById("res2").disabled = true;
+    }
+    if (gameData.res3Amt >= 1) {
+        document.getElementById("res2").disabled = true;
+    }
+    if (gameData.res4Amt >= 1) {
         document.getElementById("res2").disabled = true;
     }
 }

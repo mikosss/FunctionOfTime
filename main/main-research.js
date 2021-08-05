@@ -9,14 +9,30 @@ function study() {
         document.getElementById("dispStudy").innerHTML = "U faile.. :c"
         document.getElementById("dispStudy").style.color = "red"
     }
-    gameData.studyPower = gameData.rawStudyPower * gameData.res02Boost
+    gameData.studyPower = gameData.rawStudyPower * gameData.res02Boost * (Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost
     gameData.dispStudyPoint = thousands_separators(Math.round(gameData.studyPoint*100)/100)
     gameData.dispStudyPower = thousands_separators(Math.round(gameData.studyPower*100)/100)
     gameData.expoStudyPoint = gameData.studyPoint.toExponential(3)
     document.getElementById("studyChance").innerHTML = gameData.studyChance
     document.getElementById("dispStudyPoint").innerHTML = gameData.dispStudyPoint
     document.getElementById("expoStudyPoint").innerHTML = gameData.expoStudyPoint
-    document.getElementById("dispStudyPower").innerHTML = gameData.dispStudyPower
+}
+
+function resAdditive() {
+    gameData.studyPoint += gameData.resAdditive
+    gameData.dispStudyPoint = thousands_separators(Math.round(gameData.studyPoint*100)/100)
+    gameData.expoStudyPoint = gameData.studyPoint.toExponential(3)
+    document.getElementById("dispStudyPoint").innerHTML = gameData.dispStudyPoint
+    document.getElementById("expoStudyPoint").innerHTML = gameData.expoStudyPoint
+}
+
+function resAdditiveVal() {
+    gameData.resAdditive = gameData.studyPower * (gameData.studyChance / 100) * (1000 / gameData.tickspeed) * gameData.res03Boost
+    gameData.studyPower = gameData.rawStudyPower * gameData.res02Boost * (Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost
+    gameData.dispResAdditive = thousands_separators(Math.round(gameData.resAdditive*100)/100)
+    gameData.expoResAdditive = gameData.resAdditive.toExponential(3)
+    document.getElementById("dispResAdditive").innerHTML = gameData.dispResAdditive
+    document.getElementById("expoResAdditive").innerHTML = gameData.expoResAdditive
 }
 
 function res01() {
@@ -52,6 +68,18 @@ function res02() {
     }
 }
 
+function res03() {
+    if (gameData.studyPoint >= gameData.res03Cost) {
+        gameData.studyPoint -= gameData.res03Cost
+        gameData.res03Boost += 1
+        gameData.res03Amt += 1
+        gameData.dispRes03Cost = thousands_separators(Math.round(gameData.res03Cost*100)/100)
+        gameData.dispStudyPoint = thousands_separators(Math.round(gameData.studyPoint*100)/100)
+        document.getElementById("dispStudyPoint").innerHTML = gameData.dispStudyPoint
+        document.getElementById("dispRes02Cost").innerHTML = gameData.dispRes02Cost
+    }
+}
+
 function res1() {
     if (gameData.studyPoint >= gameData.res1Cost) {
         gameData.studyPoint -= gameData.res1Cost
@@ -81,3 +109,36 @@ function res2() {
         document.getElementById("dispTickspeed").innerHTML = gameData.dispTickspeed
     }
 }
+
+function res3() {
+    if (gameData.studyPoint >= gameData.res3Cost) {
+        gameData.studyPoint -= gameData.res3Cost
+        gameData.res3Boost += 1
+        gameData.res3Amt += 1
+        gameData.dispRes3Cost = thousands_separators(Math.round(gameData.res3Cost*100)/100)
+        gameData.dispStudyPoint = thousands_separators(Math.round(gameData.studyPoint*100)/100)
+        document.getElementById("dispStudyPoint").innerHTML = gameData.dispStudyPoint
+        document.getElementById("dispRes3Cost").innerHTML = gameData.dispRes3Cost
+    }
+}
+
+function res4() {
+    if (gameData.studyPoint >= gameData.res4Cost) {
+        gameData.studyPoint -= gameData.res4Cost
+        gameData.res4Boost += 1
+        gameData.res4Amt += 1
+        gameData.dispRes4Cost = thousands_separators(Math.round(gameData.res4Cost*100)/100)
+        gameData.dispStudyPoint = thousands_separators(Math.round(gameData.studyPoint*100)/100)
+        document.getElementById("dispStudyPoint").innerHTML = gameData.dispStudyPoint
+        document.getElementById("dispRes4Cost").innerHTML = gameData.dispRes4Cost
+    }
+}
+
+var displayGameLoop = window.setInterval(function() {
+    resAdditiveVal()
+  }, 1)
+
+  
+var timeGameLoop = window.setInterval(function() {
+    resAdditive()
+  }, 1000)

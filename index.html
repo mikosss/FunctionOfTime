@@ -29,7 +29,7 @@
         </div>
         <br>
         <div id="FunctionF" class="subtabcontent">
-            <div class="formula">f(t+1) = f(t) + a<span id="bText">b</span><span id="cText">c</span><span id="dText">d</span></div>
+            <div class="formula">f(t+1) = f(t) + a<span id="bText">b</span><span id="cText">c</span><span id="dText">d</span><span id="res3Text">×log(t+10)</span></div>
             <div style="text-align: center;">f(t) → f(t+1) = 1 tick</div>
             <div style="text-align: center;">t = <span id="dispTime">0</span><span id="expoTime">0</span></div>
             <br>
@@ -68,7 +68,11 @@
     <div id="Research" class="tabcontent">
         <div style="text-align: center; font-weight: bold;" id="unlockResearch"> Req: f(t) ≥ 100,000</div>
         <div id="researchTab">
-            <div style="text-align: center; font-size: 21px;"><span id="dispStudyPoint">0</span><span id="expoStudyPoint">0</span> Study Points</div>
+            <div style="text-align: center; font-size: 21px;">
+                <span id="dispStudyPoint">0</span><span id="expoStudyPoint">0</span> Study Points
+                <br>
+                <span id="resAdditiveText">+<span id="dispResAdditive">0</span><span id="expoResAdditive">0</span>/second</span>
+            </div>
             <div style="text-align: center; font-size: 16px;">
                 <button id="studyButton" onclick="study()">Study</button><br>Study Chance: <span id="studyChance">10</span>% <span id="lazyText">- cuz u lazy 3:)</span>
                 <div id="dispStudy"></div>
@@ -93,14 +97,21 @@
                                 -<span id="dispRes02Cost">10</span><span id="expoRes02Cost">10</span> Study Points
                             </button>
                         </td>
+                        <td>
+                            <button onclick="res03()" class="researchButton" id="res0.3">
+                                Gain Study Point/s every second based on your Study Chance, Study Power, and Tickspeed
+                                <br>
+                                -<span id="dispRes03Cost">100</span> Study Points
+                            </button>
+                        </td>
                     </tr>
                 </table>
                 <table class="resTable">
                     <tr>
                         <td><button onclick="res1()" class="researchButton" id="res1">+1% "a, b, c, & d" Variable Value <br>-<span id="dispRes1Cost">5</span><span id="expoRes1Cost">5</span> Study Points</button></td>
                         <td><button onclick="res2()" class="researchButton" id="res2">×0.9 tickspeed <br> -<span id="dispRes2Cost">100</span> Study Points</button></td>
-                        <td><button class="researchButton" id="res3">RESEARCH 3</button></td>
-                        <td><button class="researchButton" id="res4">RESEARCH 4</button></td>
+                        <td><button onclick="res3()" class="researchButton" id="res3">Increase the gained f(t) amount based on (t)<br>×log(t+10)<br>-<span id="dispRes3Cost">250</span> Study Points</button></td>
+                        <td><button onclick="res4()" class="researchButton" id="res4">Increase the Study Power based on (t)<br>×√(log(t+10))<br>-<span id="dispRes4Cost">1,000</span> Study Points</button></td>
                         <td><button class="researchButton" id="res5">RESEARCH 5</button></td>
                     </tr>
                     <tr>
@@ -124,7 +135,7 @@
     <div id="Options" class="tabcontent">
         Options
         <br>
-        version pre-release 0.0.0 d-20
+        version pre-release 0.0.0 d-21
     </div>
     <script src="tab-functions/tab-function.js" charset="utf-8" type="text/javascript"></script>
     <script src="game-data.js" charset="utf-8" type="text/javascript"></script>

@@ -52,6 +52,10 @@ function aVarUp() {
     gameData.aVarCost *= 1.5
     gameData.dispAVarCost = thousands_separators(Math.round(gameData.aVarCost*100)/100)
     gameData.expoAVarCost = gameData.aVarCost.toExponential(3)
+    gameData.dispftVal = thousands_separators(Math.round(gameData.ftVal*100)/100)
+    gameData.expoftVal = gameData.ftVal.toExponential(3)
+    document.getElementById("dispftVal").innerHTML = gameData.dispftVal
+    document.getElementById("expoftVal").innerHTML = gameData.expoftVal
     document.getElementById("dispAVarCost").innerHTML = gameData.dispAVarCost
     document.getElementById("expoAVarCost").innerHTML = gameData.expoAVarCost
   }
@@ -64,6 +68,10 @@ function bVarUp() {
     gameData.bVarCost *= 1.5
     gameData.dispBVarCost = thousands_separators(Math.round(gameData.bVarCost*100)/100)
     gameData.expoBVarCost = gameData.bVarCost.toExponential(3)
+    gameData.dispftVal = thousands_separators(Math.round(gameData.ftVal*100)/100)
+    gameData.expoftVal = gameData.ftVal.toExponential(3)
+    document.getElementById("dispftVal").innerHTML = gameData.dispftVal
+    document.getElementById("expoftVal").innerHTML = gameData.expoftVal
     document.getElementById("dispBVarCost").innerHTML = gameData.dispBVarCost
     document.getElementById("expoBVarCost").innerHTML = gameData.expoBVarCost
   }
@@ -76,6 +84,10 @@ function cVarUp() {
     gameData.cVarCost *= 1.5
     gameData.dispCVarCost = thousands_separators(Math.round(gameData.cVarCost*100)/100)
     gameData.expoCVarCost = gameData.cVarCost.toExponential(3)
+    gameData.dispftVal = thousands_separators(Math.round(gameData.ftVal*100)/100)
+    gameData.expoftVal = gameData.ftVal.toExponential(3)
+    document.getElementById("dispftVal").innerHTML = gameData.dispftVal
+    document.getElementById("expoftVal").innerHTML = gameData.expoftVal
     document.getElementById("dispCVarCost").innerHTML = gameData.dispCVarCost
     document.getElementById("expoCVarCost").innerHTML = gameData.expoCVarCost
   }
@@ -88,6 +100,10 @@ function dVarUp() {
     gameData.dVarCost *= 1.5
     gameData.dispDVarCost = thousands_separators(Math.round(gameData.dVarCost*100)/100)
     gameData.expoDVarCost = gameData.dVarCost.toExponential(3)
+    gameData.dispftVal = thousands_separators(Math.round(gameData.ftVal*100)/100)
+    gameData.expoftVal = gameData.ftVal.toExponential(3)
+    document.getElementById("dispftVal").innerHTML = gameData.dispftVal
+    document.getElementById("expoftVal").innerHTML = gameData.expoftVal
     document.getElementById("dispDVarCost").innerHTML = gameData.dispDVarCost
     document.getElementById("expoDVarCost").innerHTML = gameData.expoDVarCost
   }
