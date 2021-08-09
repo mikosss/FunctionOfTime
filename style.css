@@ -38,7 +38,7 @@ body {
     background-color: #32CD32;
 }
 
-#fTable {
+.fTable {
     width: 100%;
     border: solid 1px;
     padding: 5px;
@@ -97,15 +97,7 @@ body {
     font-weight: bold;
 }
 
-#expoAVarVal {
-    font-weight: bold;
-}
-
 #dispRawAVarVal {
-    font-weight: bold;
-}
-
-#expoRawAVarVal {
     font-weight: bold;
 }
 
@@ -113,15 +105,7 @@ body {
     font-weight: bold;
 }
 
-#expoAVarCost {
-    font-weight: bold;
-}
-
 #dispBVarVal {
-    font-weight: bold;
-}
-
-#expoBVarVal {
     font-weight: bold;
 }
 
@@ -129,15 +113,7 @@ body {
     font-weight: bold;
 }
 
-#expoRawBVarVal {
-    font-weight: bold;
-}
-
 #dispBVarCost {
-    font-weight: bold;
-}
-
-#expoBVarCost {
     font-weight: bold;
 }
 
@@ -145,15 +121,7 @@ body {
     font-weight: bold;
 }
 
-#expoCVarVal {
-    font-weight: bold;
-}
-
 #dispRawCVarVal {
-    font-weight: bold;
-}
-
-#expoRawCVarVal {
     font-weight: bold;
 }
 
@@ -161,15 +129,7 @@ body {
     font-weight: bold;
 }
 
-#expoCVarCost {
-    font-weight: bold;
-}
-
 #dispDVarVal {
-    font-weight: bold;
-}
-
-#expoDVarVal {
     font-weight: bold;
 }
 
@@ -177,15 +137,15 @@ body {
     font-weight: bold;
 }
 
-#expoRawDVarVal {
-    font-weight: bold;
-}
-
 #dispDVarCost {
     font-weight: bold;
 }
 
-#expoDVarCost {
+#dispUVarVal {
+    font-weight: bold;
+}
+
+#dispMultUVarVal {
     font-weight: bold;
 }
 
@@ -200,9 +160,9 @@ body {
 
 .researchButton {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    height: 150px;
-    width: 250px;
+    font-size: 14px;
+    height: 120px;
+    width: 200px;
     border-radius: 5px;
     border: solid 3px;
     border-color: black;

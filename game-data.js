@@ -1,118 +1,65 @@
 var gameData = {
     ftVal: 1,                       //layer:0
-    dispftVal: 1,
-    expoftVal: 1,
     additive: 0,
-    dispAdditive: 0,
-    expoAdditive: 0,
     tickspeed: 1000,
-    dispTickspeed: 1000,
     time: 0,                        //layer:1
-    dispTime: 0,
-    expoTime: 0,
     timespeed: 1,
     aVarVal: 0,
-    dispAVarVal: 0,
-    expoAVarVal: 0,
     rawAVarVal: 0,
-    dispRawAVarVal: 0,
-    expoRawAVarVal: 0,
     aVarCost: 1,
-    dispAVarCost: 1,
-    expoAVarCost: 1,
     bVarVal: 1,
-    dispBVarVal: 1,
-    expoBVarVal: 1,
     rawBVarVal: 1,
-    dispRawBVarVal: 1,
-    expoRawBVarVal: 1,
     bVarCost: 100,
-    dispBVarCost: 100,
-    expoBVarCost: 100,
     cVarVal: 1,
-    dispCVarVal: 1,
-    expoCVarVal: 1,
     rawCVarVal: 1,
-    dispRawCVarVal: 1,
-    expoRawCVarVal: 1,
     cVarCost: 10000,
-    dispCVarCost: 10000,
-    expoCVarCost: 10000,
     dVarVal: 1,
-    dispDVarVal: 1,
-    expoDVarVal: 1,
     rawDVarVal: 1,
-    dispRawDVarVal: 1,
-    expoRawDVarVal: 1,
     dVarCost: 1000000,
-    dispDVarCost: 1000000,
-    expoDVarCost: 1000000,
+    uVarVal: 1,
+    rawUVarVal: 1,
+    multUVarVal: 1,
     studyPoint: 0,                  //research
-    dispStudyPoint: 0,
-    expoStudyPoint: 0,
     studyPower: 1,
     rawStudyPower: 1,
-    dispStudyPower: 1,
-    studyChance: 10,
+    studyChance: 20,
     resAdditive: 0,
-    dispResAdditive: 0,
-    expoResAdditive: 0,
     res01Amt: 0,
     res01Cost: 10,
-    dispRes01Cost: 10,
     res02Boost: 1,
     res02Cost: 10,
-    dispRes02Cost: 10,
-    expoRes02Cost: 10,
     res03Boost: 0,
     res03Amt: 0,
     res03Cost: 100,
-    dispRes03Cost: 100,
     res1Boost: 1,
     res1Cost: 5,
-    dispRes1Cost: 5,
-    expoRes1Cost: 5,
     res2Amt: 0,
     res2Cost: 100,
-    dispRes2Cost: 100,
     res3Boost: 0,
     res3Amt: 0,
     res3Cost: 250,
-    dispRes3Cost: 250,
     res4Boost: 0,
     res4Amt: 0,
     res4Cost: 1000,
-    dispRes4Cost: 1000,
+    res5Amt: 0,
+    res5Cost: 2500,
 }
 
-document.getElementById("expoftVal").style.display = "none"         //layer:0
-document.getElementById("expoAdditive").style.display = "none"
-document.getElementById("expoTime").style.display = "none"          //layer:1
+//layer:0
+//layer:1
 document.getElementById("bVarRow").style.display = "none"
 document.getElementById("bText").style.display = "none"
 document.getElementById("cVarRow").style.display = "none"
 document.getElementById("cText").style.display = "none"
 document.getElementById("dVarRow").style.display = "none"
 document.getElementById("dText").style.display = "none"
-document.getElementById("expoAVarVal").style.display = "none"
-document.getElementById("expoRawAVarVal").style.display = "none"
-document.getElementById("expoAVarCost").style.display = "none"
-document.getElementById("expoBVarVal").style.display = "none"
-document.getElementById("expoRawBVarVal").style.display = "none"
-document.getElementById("expoBVarCost").style.display = "none"
-document.getElementById("expoCVarVal").style.display = "none"
-document.getElementById("expoRawCVarVal").style.display = "none"
-document.getElementById("expoCVarCost").style.display = "none"
-document.getElementById("expoDVarVal").style.display = "none"
-document.getElementById("expoRawDVarVal").style.display = "none"
-document.getElementById("expoDVarCost").style.display = "none"
+document.getElementById("uTable").style.display = "none"
+document.getElementById("uText1").style.display = "none"
+document.getElementById("uText2").style.display = "none"
+document.getElementById("uText3").style.display = "none"
 document.getElementById("researchTabText").style.display = "none"   //research
 document.getElementById("researchTab").style.display = "none"
 document.getElementById("resAdditiveText").style.display = "none"
-document.getElementById("expoResAdditive").style.display = "none"
-document.getElementById("expoStudyPoint").style.display = "none"
-document.getElementById("expoRes02Cost").style.display = "none"
-document.getElementById("expoRes1Cost").style.display = "none"
 document.getElementById("res3Text").style.display = "none"
 document.getElementById("fogTab").style.display = "none"            //layer:2
 document.getElementById("fohTab").style.display = "none"            //layer:3
@@ -151,6 +98,14 @@ function buttonColor() {
         document.getElementById("dVarUp").style.backgroundColor = "#808080"
         document.getElementById("dVarUp").style.cursor = "default"
     }
+    if (gameData.rawUVarVal >= gameData.uVarVal) {
+        document.getElementById("uVarUp").style.backgroundColor = "#FFFFFF"
+        document.getElementById("uVarUp").style.cursor = "pointer"
+    }
+    if (gameData.rawUVarVal < gameData.uVarVal) {
+        document.getElementById("uVarUp").style.backgroundColor = "#808080"
+        document.getElementById("uVarUp").style.cursor = "default"
+    }
     if (gameData.studyPoint >= gameData.res01Cost) {
         document.getElementById("res0.1").style.backgroundColor = "#FFFFFF"
         document.getElementById("res0.1").style.cursor = "pointer"
@@ -159,7 +114,7 @@ function buttonColor() {
         document.getElementById("res0.1").style.backgroundColor = "#808080"
         document.getElementById("res0.1").style.cursor = "default"
     }
-    if (gameData.res01Amt >= 40) {
+    if (gameData.res01Amt >= 30) {
         document.getElementById("res0.1").style.backgroundColor = "#7CFC00"
         document.getElementById("res0.1").style.cursor = "default"
     }
@@ -228,6 +183,18 @@ function buttonColor() {
         document.getElementById("res4").style.backgroundColor = "#7CFC00"
         document.getElementById("res4").style.cursor = "default"
     }
+    if (gameData.studyPoint >= gameData.res5Cost) {
+        document.getElementById("res5").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res5").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res5Cost) {
+        document.getElementById("res5").style.backgroundColor = "#808080"
+        document.getElementById("res5").style.cursor = "default"
+    }
+    if (gameData.res5Amt >= 1) {
+        document.getElementById("res5").style.backgroundColor = "#7CFC00"
+        document.getElementById("res5").style.cursor = "default"
+    }
 }
 
 function unlocks() {
@@ -253,7 +220,7 @@ function unlocks() {
     if (gameData.studyChance >= 25) {
         document.getElementById("lazyText").style.display = "none"
     }
-    if (gameData.res01Amt >= 40) {
+    if (gameData.res01Amt >= 30) {
         document.getElementById("res0.1").disabled = true;
     }
     if (gameData.res03Amt >= 1) {
@@ -264,14 +231,68 @@ function unlocks() {
         document.getElementById("res2").disabled = true;
     }
     if (gameData.res3Amt >= 1) {
-        document.getElementById("res2").disabled = true;
+        document.getElementById("res3").disabled = true;
     }
     if (gameData.res4Amt >= 1) {
-        document.getElementById("res2").disabled = true;
+        document.getElementById("res4").disabled = true;
+    }
+    if (gameData.res5Amt >= 1) {
+        document.getElementById("res5").disabled = true;
+        document.getElementById("uTable").style.display = "table"
+        document.getElementById("uText1").style.display = "inline"
+        document.getElementById("uText2").style.display = "inline"
+        document.getElementById("uText3").style.display = "inline"
+        document.getElementById("uText4").style.display = "none"
+        document.getElementById("uText5").style.display = "none"
     }
 }
+
+function overallDisplay() {
+    document.getElementById("dispftVal").innerHTML = displayNum(Math.round(gameData.ftVal*100)/100)
+    document.getElementById("dispAdditive").innerHTML = displayNum(Math.round(gameData.additive*100)/100)
+    document.getElementById("dispTime").innerHTML = displayNum(Math.round(gameData.time*100)/100)
+    document.getElementById("dispTickspeed").innerHTML = gameData.tickspeed
+    document.getElementById("dispRawAVarVal").innerHTML = displayNum(Math.round(gameData.rawAVarVal*100)/100)
+    document.getElementById("dispRawBVarVal").innerHTML = displayNum(Math.round(gameData.rawBVarVal*100)/100)
+    document.getElementById("dispRawCVarVal").innerHTML = displayNum(Math.round(gameData.rawCVarVal*100)/100)
+    document.getElementById("dispRawDVarVal").innerHTML = displayNum(Math.round(gameData.rawDVarVal*100)/100)
+    document.getElementById("dispMultUVarVal").innerHTML = displayNum(Math.round(gameData.multUVarVal*100)/100)
+    document.getElementById("dispAVarVal").innerHTML = displayNum(Math.round(gameData.aVarVal*100)/100)
+    document.getElementById("dispBVarVal").innerHTML = displayNum(Math.round(gameData.bVarVal*100)/100)
+    document.getElementById("dispCVarVal").innerHTML = displayNum(Math.round(gameData.cVarVal*100)/100)
+    document.getElementById("dispDVarVal").innerHTML = displayNum(Math.round(gameData.dVarVal*100)/100)
+    document.getElementById("dispUVarVal").innerHTML = displayNum(Math.round(gameData.uVarVal*100)/100)
+    document.getElementById("dispAVarCost").innerHTML = displayNum(Math.round(gameData.aVarCost*100)/100)
+    document.getElementById("dispBVarCost").innerHTML = displayNum(Math.round(gameData.bVarCost*100)/100)
+    document.getElementById("dispCVarCost").innerHTML = displayNum(Math.round(gameData.cVarCost*100)/100)
+    document.getElementById("dispDVarCost").innerHTML = displayNum(Math.round(gameData.dVarCost*100)/100)
+    document.getElementById("studyChance").innerHTML = gameData.studyChance
+    document.getElementById("dispStudyPoint").innerHTML = displayNum(Math.round(gameData.studyPoint*100)/100)
+    document.getElementById("dispResAdditive").innerHTML = displayNum(Math.round(gameData.resAdditive*100)/100)
+    document.getElementById("dispRes01Cost").innerHTML = displayNum(Math.round(gameData.res01Cost*100)/100)
+    document.getElementById("res01Amt").innerHTML = gameData.res01Amt
+    document.getElementById("dispRes02Cost").innerHTML = displayNum(Math.round(gameData.res02Cost*100)/100)
+    document.getElementById("dispRes03Cost").innerHTML = displayNum(Math.round(gameData.res03Cost*100)/100)
+    document.getElementById("dispRes1Cost").innerHTML = displayNum(Math.round(gameData.res1Cost*100)/100)
+    document.getElementById("dispRes2Cost").innerHTML = displayNum(Math.round(gameData.res2Cost*100)/100)
+    document.getElementById("dispRes3Cost").innerHTML = displayNum(Math.round(gameData.res3Cost*100)/100)
+    document.getElementById("dispRes4Cost").innerHTML = displayNum(Math.round(gameData.res4Cost*100)/100)
+    document.getElementById("dispRes5Cost").innerHTML = displayNum(Math.round(gameData.res5Cost*100)/100)
+}
+
+function displayNum(num) {
+    if (num < 1e9) {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+    }
+    if (num >= 1e9) {
+        return Number.parseFloat(num).toExponential(3);
+    }
+  }
 
 var mainGameLoop = window.setInterval(function() {
     unlocks()
     buttonColor()
+    overallDisplay()
   }, 1)
