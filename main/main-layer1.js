@@ -1,8 +1,8 @@
 function val() {
-  gameData.aVarVal = gameData.rawAVarVal * gameData.res1Boost
-  gameData.bVarVal = gameData.rawBVarVal * gameData.res1Boost
-  gameData.cVarVal = gameData.rawCVarVal * gameData.res1Boost
-  gameData.dVarVal = gameData.rawDVarVal * gameData.res1Boost
+  gameData.aVarVal = gameData.rawAVarVal * gameData.resBooster
+  gameData.bVarVal = gameData.rawBVarVal * gameData.resBooster
+  gameData.cVarVal = gameData.rawCVarVal * gameData.resBooster
+  gameData.dVarVal = gameData.rawDVarVal * gameData.resBooster
   gameData.multUVarVal = gameData.rawUVarVal / gameData.uVarVal
   gameData.rawUVarVal = Math.log(gameData.ftVal) / Math.log(2)
 }
@@ -63,7 +63,8 @@ var displayGameLoop = window.setInterval(function() {
     val()
   }, 1)
 
-  
-var timeGameLoop = window.setInterval(function() {
+var timeGameLoop = function() {
     time()
-  }, gameData.tickspeed)
+  setTimeout(timeGameLoop, gameData.tickspeed);
+}
+setTimeout(timeGameLoop, gameData.tickspeed);

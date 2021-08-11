@@ -79,52 +79,36 @@
             <div style="text-align: center; font-size: 21px;">
                 <span id="dispStudyPoint">0</span> Study Points
                 <br>
-                <span id="resAdditiveText">+<span id="dispResAdditive">0</span>/second</span>
+                +<span id="dispResAdditive">0</span> / Study
             </div>
             <div style="text-align: center; font-size: 16px;">
-                <button id="studyButton" onclick="study()">Study</button><br>Study Chance: <span id="studyChance">20</span>% <span id="lazyText">- cuz u lazy 3:)</span>
+                Study Speed: <span id="studySpeed">1,000</span>ms
+                <br>
+                <span id="res7Text">Study Speed Boost: ×<span id="studySpeedBoost">1</span></span>
+                <br>
+                Study Chance: <span id="studyChance">20</span>% <span id="lazyText">- cuz u lazy 3:)</span>
                 <div id="dispStudy"></div>
             </div>
             <br>
             <div>
                 <table class="resTable">
                     <tr>
-                         <td>
-                            <button onclick="res01()" class="researchButton" id="res0.1">
-                                +1% Study Chance
-                                <br>
-                                -<span id="dispRes01Cost">10</span> Study Points 
-                                <br>
-                                (<span id="res01Amt">0</span>/30)
-                            </button>
-                        </td>
-                        <td>
-                            <button onclick="res02()" class="researchButton" id="res0.2">
-                                +10% Study Power
-                                <br>
-                                -<span id="dispRes02Cost">10</span> Study Points
-                            </button>
-                        </td>
-                        <td>
-                            <button onclick="res03()" class="researchButton" id="res0.3">
-                                Gain Study Point/s every second based on your Study Chance, Study Power, and Tickspeed
-                                <br>
-                                -<span id="dispRes03Cost">100</span> Study Points
-                            </button>
-                        </td>
+                        <td><button onclick="res01()" class="researchButton" id="res0.1"><b>Upgrade 1:</b><br>+1% Study Chance<br>-f(t) = <span id="dispRes01Cost">100,000</span><br>(<span id="res01Amt">0</span>/30)</button></td>
+                        <td><button onclick="res02()" class="researchButton" id="res0.2"><b>Upgrade 2:</b><br>+0.5 Study Power<br>-f(t) = <span id="dispRes02Cost">100,000</span></button></td>
+                        <td><button onclick="res03()" class="researchButton" id="res0.3"><b>Upgrade 3:</b><br>×0.95 Study Speed<br>-f(t) = <span id="dispRes03Cost">100,000</span><br><span id="res03Cap">(<span id="res03Amt">0</span>/59)</span></button></td>
                     </tr>
                 </table>
                 <table class="resTable">
                     <tr>
-                        <td><button onclick="res1()" class="researchButton" id="res1">+1% "a, b, c, & d" Variable Value <br>-<span id="dispRes1Cost">5</span> Study Points</button></td>
-                        <td><button onclick="res2()" class="researchButton" id="res2">×0.9 tickspeed <br> -<span id="dispRes2Cost">100</span> Study Points</button></td>
-                        <td><button onclick="res3()" class="researchButton" id="res3">Increase the gained f(t) amount based on (t)<br>×log(t+10)<br>-<span id="dispRes3Cost">250</span> Study Points</button></td>
-                        <td><button onclick="res4()" class="researchButton" id="res4">Increase the Study Power based on (t)<br>×√(log(t+10))<br>-<span id="dispRes4Cost">1,000</span> Study Points</button></td>
-                        <td><button onclick="res5()" class="researchButton" id="res5">Unlock "u" Variable <br>-<span id="dispRes5Cost">2,500</span> Study Points</button></td>
+                        <td><button onclick="res1()" class="researchButton" id="res1"><b>Research 1:</b><br>+<span id="res1Booster">1</span>% "a, b, c, & d" Variable Value<br>-<span id="dispRes1Cost">5</span> Study Points</button></td>
+                        <td><button onclick="res2()" class="researchButton" id="res2"><b>Research 2:</b><br>×0.9 tickspeed<br>-<span id="dispRes2Cost">100</span> Study Points</button></td>
+                        <td><button onclick="res3()" class="researchButton" id="res3"><b>Research 3:</b><br>Increase the gained f(t) amount based on (t)<br>×log(t+10)<br>-<span id="dispRes3Cost">250</span> Study Points</button></td>
+                        <td><button onclick="res4()" class="researchButton" id="res4"><b>Research 4:</b><br>Increase the Study Power based on (t)<br>×√(log(t+10))<br>-<span id="dispRes4Cost">1,000</span> Study Points</button></td>
+                        <td><button onclick="res5()" class="researchButton" id="res5"><b>Research 5:</b><br>Unlock "u" Variable<br>-<span id="dispRes5Cost">2,500</span> Study Points</button></td>
                     </tr>
                     <tr>
-                        <td><button class="researchButton" id="res6">RESEARCH 6</button></td>
-                        <td><button class="researchButton" id="res7">RESEARCH 7</button></td>
+                        <td><button onclick="res6()" class="researchButton" id="res6"><b>Research 6:</b><br>+0.5% Research 1 power<br>-<span id="dispRes6Cost">5,000</span> Study Points</button></td>
+                        <td><button onclick="res7()" class="researchButton" id="res7"><b>Research 7:</b><br>Upgrade 3 cap is removed. The cap is still 50ms, instead of decreasing the study speed, it will increase the study power.<br>-<span id="dispRes7Cost">10,000</span> Study Points</button></td>
                         <td><button class="researchButton" id="res8">RESEARCH 8</button></td>
                         <td><button class="researchButton" id="res9">RESEARCH 9</button></td>
                         <td><button class="researchButton" id="res10">RESEARCH 10</button></td>
@@ -143,7 +127,7 @@
     <div id="Options" class="tabcontent">
         Options
         <br>
-        version pre-release 0.0.0 d-25
+        version pre-release 0.0.0 d-27
     </div>
     <script src="tab-functions/tab-function.js" charset="utf-8" type="text/javascript"></script>
     <script src="game-data.js" charset="utf-8" type="text/javascript"></script>

@@ -1,8 +1,8 @@
 function study() {
     var studyChance = Math.random() * 100
     if (studyChance <= gameData.studyChance) {
-        gameData.studyPoint += gameData.studyPower
-        document.getElementById("dispStudy").innerHTML = "Woweers, u gaIned " + displayNum(Math.round(gameData.studyPower*100)/100) + " studi Poits..."
+        gameData.studyPoint += gameData.resAdditive
+        document.getElementById("dispStudy").innerHTML = "Woweers, u gaIned " + displayNum(Math.round(gameData.resAdditive*100)/100) + " studi Poits..."
         document.getElementById("dispStudy").style.color = "green"
     }
     if (studyChance > gameData.studyChance) {
@@ -11,18 +11,27 @@ function study() {
     }
 }
 
-function resAdditive() {
-    gameData.studyPoint += gameData.resAdditive
+function resVal() {
+    gameData.resAdditive = gameData.studyPower
+    gameData.studyPower = gameData.rawStudyPower * ((Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost) * (gameData.studySpeedBoost**gameData.res7Boost)
+    gameData.resBooster = (1 + gameData.res1Boost) + (gameData.res6Boost * gameData.res1Amt)
+    gameData.res1Booster = 1 + (gameData.res6Boost * 100) 
 }
 
-function resAdditiveVal() {
-    gameData.resAdditive = gameData.studyPower * (gameData.studyChance / 100) * (1000 / gameData.tickspeed) * gameData.res03Boost
-    gameData.studyPower = gameData.rawStudyPower * gameData.res02Boost * (Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost
+function resSpeed() {
+    if (gameData.rawStudySpeed > 50) {
+        gameData.studySpeed = gameData.rawStudySpeed
+        gameData.studySpeedBoost = 1
+    }
+    if (gameData.rawStudySpeed <= 50) {
+        gameData.studySpeed = 50
+        gameData.studySpeedBoost = 50 / gameData.rawStudySpeed
+    }
 }
 
 function res01() {
-    if (gameData.studyPoint >= gameData.res01Cost) {
-        gameData.studyPoint -= gameData.res01Cost
+    if (gameData.ftVal >= gameData.res01Cost) {
+        gameData.ftVal -= gameData.res01Cost
         gameData.studyChance += 1
         gameData.res01Cost *= 1.2
         gameData.res01Amt += 1
@@ -30,17 +39,18 @@ function res01() {
 }
 
 function res02() {
-    if (gameData.studyPoint >= gameData.res02Cost) {
-        gameData.studyPoint -= gameData.res02Cost
-        gameData.res02Boost += 0.1
+    if (gameData.ftVal >= gameData.res02Cost) {
+        gameData.ftVal -= gameData.res02Cost
+        gameData.rawStudyPower += 0.5
         gameData.res02Cost *= 1.2
     }
 }
 
 function res03() {
-    if (gameData.studyPoint >= gameData.res03Cost) {
-        gameData.studyPoint -= gameData.res03Cost
-        gameData.res03Boost += 1
+    if (gameData.ftVal >= gameData.res03Cost) {
+        gameData.ftVal -= gameData.res03Cost
+        gameData.rawStudySpeed *= 0.95
+        gameData.res03Cost *= 1.2
         gameData.res03Amt += 1
     }
 }
@@ -50,6 +60,7 @@ function res1() {
         gameData.studyPoint -= gameData.res1Cost
         gameData.res1Boost += 0.01
         gameData.res1Cost *= 1.2
+        gameData.res1Amt += 1
     }
 }
 
@@ -84,11 +95,29 @@ function res5() {
     }
 }
 
+function res6() {
+    if (gameData.studyPoint >= gameData.res6Cost) {
+        gameData.studyPoint -= gameData.res6Cost
+        gameData.res6Boost += 0.005
+        gameData.res6Cost *= 1.2
+    }
+}
+
+function res7() {
+    if (gameData.studyPoint >= gameData.res7Cost) {
+        gameData.studyPoint -= gameData.res7Cost
+        gameData.res7Boost += 1
+        gameData.res7Amt += 1
+    }
+}
+
 var displayGameLoop = window.setInterval(function() {
-    resAdditiveVal()
+    resVal()
+    resSpeed()
   }, 1)
 
-  
-var timeGameLoop = window.setInterval(function() {
-    resAdditive()
-  }, 1000)
+var resStudyGameLoop = function() {
+    study()
+  setTimeout(resStudyGameLoop, gameData.studySpeed);
+}
+setTimeout(resStudyGameLoop, gameData.studySpeed);

@@ -19,20 +19,25 @@ var gameData = {
     uVarVal: 1,
     rawUVarVal: 1,
     multUVarVal: 1,
-    studyPoint: 0,                  //research
-    studyPower: 1,
-    rawStudyPower: 1,
+    resUnlockVal: 0,                 //research
+    studyPoint: 0,
+    studyPower: 0,
+    rawStudyPower: 0,
+    studySpeed: 1000,
+    rawStudySpeed: 1000,
+    studySpeedBoost: 1,
     studyChance: 20,
     resAdditive: 0,
     res01Amt: 0,
-    res01Cost: 10,
-    res02Boost: 1,
-    res02Cost: 10,
-    res03Boost: 0,
+    res01Cost: 100000,
+    res02Cost: 100000,
     res03Amt: 0,
-    res03Cost: 100,
-    res1Boost: 1,
+    res03Cost: 100000,
+    resBooster: 1,
+    res1Boost: 0,
+    res1Amt: 0,
     res1Cost: 5,
+    res1Booster: 1,
     res2Amt: 0,
     res2Cost: 100,
     res3Boost: 0,
@@ -43,6 +48,11 @@ var gameData = {
     res4Cost: 1000,
     res5Amt: 0,
     res5Cost: 2500,
+    res6Boost: 0,
+    res6Cost: 5000,
+    res7Boost: 0,
+    res7Amt: 0,
+    res7Cost: 10000,
 }
 
 //layer:0
@@ -59,8 +69,8 @@ document.getElementById("uText2").style.display = "none"
 document.getElementById("uText3").style.display = "none"
 document.getElementById("researchTabText").style.display = "none"   //research
 document.getElementById("researchTab").style.display = "none"
-document.getElementById("resAdditiveText").style.display = "none"
 document.getElementById("res3Text").style.display = "none"
+document.getElementById("res7Text").style.display = "none"
 document.getElementById("fogTab").style.display = "none"            //layer:2
 document.getElementById("fohTab").style.display = "none"            //layer:3
 
@@ -106,11 +116,11 @@ function buttonColor() {
         document.getElementById("uVarUp").style.backgroundColor = "#808080"
         document.getElementById("uVarUp").style.cursor = "default"
     }
-    if (gameData.studyPoint >= gameData.res01Cost) {
+    if (gameData.ftVal >= gameData.res01Cost) {
         document.getElementById("res0.1").style.backgroundColor = "#FFFFFF"
         document.getElementById("res0.1").style.cursor = "pointer"
     }
-    if (gameData.studyPoint < gameData.res01Cost) {
+    if (gameData.ftVal < gameData.res01Cost) {
         document.getElementById("res0.1").style.backgroundColor = "#808080"
         document.getElementById("res0.1").style.cursor = "default"
     }
@@ -118,23 +128,23 @@ function buttonColor() {
         document.getElementById("res0.1").style.backgroundColor = "#7CFC00"
         document.getElementById("res0.1").style.cursor = "default"
     }
-    if (gameData.studyPoint >= gameData.res02Cost) {
+    if (gameData.ftVal >= gameData.res02Cost) {
         document.getElementById("res0.2").style.backgroundColor = "#FFFFFF"
         document.getElementById("res0.2").style.cursor = "pointer"
     }
-    if (gameData.studyPoint < gameData.res02Cost) {
+    if (gameData.ftVal < gameData.res02Cost) {
         document.getElementById("res0.2").style.backgroundColor = "#808080"
         document.getElementById("res0.2").style.cursor = "default"
     }
-    if (gameData.studyPoint >= gameData.res03Cost) {
+    if (gameData.ftVal >= gameData.res03Cost) {
         document.getElementById("res0.3").style.backgroundColor = "#FFFFFF"
         document.getElementById("res0.3").style.cursor = "pointer"
     }
-    if (gameData.studyPoint < gameData.res03Cost) {
+    if (gameData.ftVal < gameData.res03Cost) {
         document.getElementById("res0.3").style.backgroundColor = "#808080"
         document.getElementById("res0.3").style.cursor = "default"
     }
-    if (gameData.res03Amt >= 1) {
+    if (gameData.res03Amt >= 59) {
         document.getElementById("res0.3").style.backgroundColor = "#7CFC00"
         document.getElementById("res0.3").style.cursor = "default"
     }
@@ -195,6 +205,34 @@ function buttonColor() {
         document.getElementById("res5").style.backgroundColor = "#7CFC00"
         document.getElementById("res5").style.cursor = "default"
     }
+    if (gameData.studyPoint >= gameData.res6Cost) {
+        document.getElementById("res6").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res6").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res6Cost) {
+        document.getElementById("res6").style.backgroundColor = "#808080"
+        document.getElementById("res6").style.cursor = "default"
+    }
+    if (gameData.studyPoint >= gameData.res7Cost) {
+        document.getElementById("res7").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res7").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res7Cost) {
+        document.getElementById("res7").style.backgroundColor = "#808080"
+        document.getElementById("res7").style.cursor = "default"
+    }
+    if (gameData.res7Amt >= 1) {
+        document.getElementById("res7").style.backgroundColor = "#7CFC00"
+        document.getElementById("res7").style.cursor = "default"
+        if (gameData.ftVal >= gameData.res03Cost) {
+            document.getElementById("res0.3").style.backgroundColor = "#FFFFFF"
+            document.getElementById("res0.3").style.cursor = "pointer"
+        }
+        if (gameData.ftVal < gameData.res03Cost) {
+            document.getElementById("res0.3").style.backgroundColor = "#808080"
+            document.getElementById("res0.3").style.cursor = "default"
+        }
+    }
 }
 
 function unlocks() {
@@ -223,9 +261,8 @@ function unlocks() {
     if (gameData.res01Amt >= 30) {
         document.getElementById("res0.1").disabled = true;
     }
-    if (gameData.res03Amt >= 1) {
+    if (gameData.res03Amt >= 59) {
         document.getElementById("res0.3").disabled = true;
-        document.getElementById("resAdditiveText").style.display = "inline"
     }
     if (gameData.res2Amt >= 1) {
         document.getElementById("res2").disabled = true;
@@ -244,6 +281,12 @@ function unlocks() {
         document.getElementById("uText3").style.display = "inline"
         document.getElementById("uText4").style.display = "none"
         document.getElementById("uText5").style.display = "none"
+    }
+    if (gameData.res7Amt >= 1) {
+        document.getElementById("res7").disabled = true;
+        document.getElementById("res0.3").disabled = false;
+        document.getElementById("res0.3Cap").style.display = "none"
+        document.getElementById("res7Text").style.display = "inline"
     }
 }
 
@@ -267,17 +310,23 @@ function overallDisplay() {
     document.getElementById("dispCVarCost").innerHTML = displayNum(Math.round(gameData.cVarCost*100)/100)
     document.getElementById("dispDVarCost").innerHTML = displayNum(Math.round(gameData.dVarCost*100)/100)
     document.getElementById("studyChance").innerHTML = gameData.studyChance
+    document.getElementById("studySpeed").innerHTML = Math.round(gameData.studySpeed*100)/100
+    document.getElementById("studySpeedBoost").innerHTML = displayNum(Math.round(gameData.studySpeedBoost*100)/100)
     document.getElementById("dispStudyPoint").innerHTML = displayNum(Math.round(gameData.studyPoint*100)/100)
     document.getElementById("dispResAdditive").innerHTML = displayNum(Math.round(gameData.resAdditive*100)/100)
     document.getElementById("dispRes01Cost").innerHTML = displayNum(Math.round(gameData.res01Cost*100)/100)
     document.getElementById("res01Amt").innerHTML = gameData.res01Amt
     document.getElementById("dispRes02Cost").innerHTML = displayNum(Math.round(gameData.res02Cost*100)/100)
     document.getElementById("dispRes03Cost").innerHTML = displayNum(Math.round(gameData.res03Cost*100)/100)
+    document.getElementById("res03Amt").innerHTML = gameData.res03Amt
+    document.getElementById("res1Booster").innerHTML = displayNum(Math.round(gameData.res1Booster*100)/100)
     document.getElementById("dispRes1Cost").innerHTML = displayNum(Math.round(gameData.res1Cost*100)/100)
     document.getElementById("dispRes2Cost").innerHTML = displayNum(Math.round(gameData.res2Cost*100)/100)
     document.getElementById("dispRes3Cost").innerHTML = displayNum(Math.round(gameData.res3Cost*100)/100)
     document.getElementById("dispRes4Cost").innerHTML = displayNum(Math.round(gameData.res4Cost*100)/100)
     document.getElementById("dispRes5Cost").innerHTML = displayNum(Math.round(gameData.res5Cost*100)/100)
+    document.getElementById("dispRes6Cost").innerHTML = displayNum(Math.round(gameData.res6Cost*100)/100)
+    document.getElementById("dispRes7Cost").innerHTML = displayNum(Math.round(gameData.res7Cost*100)/100)
 }
 
 function displayNum(num) {
