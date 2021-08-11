@@ -10,7 +10,9 @@ This is the link for the game: https://mikosss.github.io/FunctionOfTime/
       <br>
       -Research 0.1 - 0.3 names are changed to Upgrade 1 - 3.
       <br>
-      -Research 6 and 7 added.
+      -Research 6 and 7 added.      
+      <br>
+      -Favicon added
     </dd>
    <dt>Version pre-release 0.0.0 d-26 (8/10/21) : </dt>
     <dd>
