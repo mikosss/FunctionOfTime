@@ -1,5 +1,5 @@
-# functionOfTime
-My first ever game!!
+# FunctionOfTime (FoT)
+This is my first ever game that i made!!!
 This is the link for the game: https://mikosss.github.io/FunctionOfTime/
 
 <h1>Update Logs:</h1>
