@@ -29,6 +29,15 @@ function resSpeed() {
     }
 }
 
+function res03CostEffect() {
+    if (gameData.res03Amt <= 59) {
+        gameData.res03CostMult = 1.2
+    }
+    if (gameData.res03Amt > 59) {
+        gameData.res03CostMult = 1.2 * (gameData.res03Amt - 59)
+    }
+}
+
 function res01() {
     if (gameData.ftVal >= gameData.res01Cost) {
         gameData.ftVal -= gameData.res01Cost
@@ -50,7 +59,7 @@ function res03() {
     if (gameData.ftVal >= gameData.res03Cost) {
         gameData.ftVal -= gameData.res03Cost
         gameData.rawStudySpeed *= 0.95
-        gameData.res03Cost *= 1.2
+        gameData.res03Cost *= gameData.res03CostMult
         gameData.res03Amt += 1
     }
 }
@@ -111,9 +120,18 @@ function res7() {
     }
 }
 
+function res8() {
+    if (gameData.studyPoint >= gameData.res8Cost) {
+        gameData.studyPoint -= gameData.res8Cost
+        gameData.res8Boost += 1
+        gameData.res8Amt += 1
+    }
+}
+
 var displayGameLoop = window.setInterval(function() {
     resVal()
     resSpeed()
+    res03CostEffect()
   }, 1)
 
 var resStudyGameLoop = function() {

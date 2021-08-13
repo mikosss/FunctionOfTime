@@ -33,6 +33,7 @@ var gameData = {
     res02Cost: 100000,
     res03Amt: 0,
     res03Cost: 100000,
+    res03CostMult: 1.2,
     resBooster: 1,
     res1Boost: 0,
     res1Amt: 0,
@@ -53,6 +54,9 @@ var gameData = {
     res7Boost: 0,
     res7Amt: 0,
     res7Cost: 10000,
+    res8Boost: 0,
+    res8Amt: 0,
+    res8Cost: 250000,
 }
 
 //layer:0
@@ -233,6 +237,18 @@ function buttonColor() {
             document.getElementById("res0.3").style.cursor = "default"
         }
     }
+    if (gameData.studyPoint >= gameData.res8Cost) {
+        document.getElementById("res8").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res8").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res8Cost) {
+        document.getElementById("res8").style.backgroundColor = "#808080"
+        document.getElementById("res8").style.cursor = "default"
+    }
+    if (gameData.res8Amt >= 1) {
+        document.getElementById("res8").style.backgroundColor = "#7CFC00"
+        document.getElementById("res8").style.cursor = "default"
+    }
 }
 
 function unlocks() {
@@ -285,8 +301,11 @@ function unlocks() {
     if (gameData.res7Amt >= 1) {
         document.getElementById("res7").disabled = true;
         document.getElementById("res0.3").disabled = false;
-        document.getElementById("res0.3Cap").style.display = "none"
+        document.getElementById("res03Cap").style.display = "none"
         document.getElementById("res7Text").style.display = "inline"
+    }
+    if (gameData.res8Amt >= 1) {
+        document.getElementById("res8").disabled = true;
     }
 }
 
@@ -309,7 +328,7 @@ function overallDisplay() {
     document.getElementById("dispBVarCost").innerHTML = displayNum(Math.round(gameData.bVarCost*100)/100)
     document.getElementById("dispCVarCost").innerHTML = displayNum(Math.round(gameData.cVarCost*100)/100)
     document.getElementById("dispDVarCost").innerHTML = displayNum(Math.round(gameData.dVarCost*100)/100)
-    document.getElementById("studyChance").innerHTML = gameData.studyChance
+    document.getElementById("studyChance").innerHTML = displayNum(Math.round(gameData.studyChance*100)/100)
     document.getElementById("studySpeed").innerHTML = Math.round(gameData.studySpeed*100)/100
     document.getElementById("studySpeedBoost").innerHTML = displayNum(Math.round(gameData.studySpeedBoost*100)/100)
     document.getElementById("dispStudyPoint").innerHTML = displayNum(Math.round(gameData.studyPoint*100)/100)

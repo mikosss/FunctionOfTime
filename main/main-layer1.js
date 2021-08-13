@@ -4,7 +4,7 @@ function val() {
   gameData.cVarVal = gameData.rawCVarVal * gameData.resBooster
   gameData.dVarVal = gameData.rawDVarVal * gameData.resBooster
   gameData.multUVarVal = gameData.rawUVarVal / gameData.uVarVal
-  gameData.rawUVarVal = Math.log(gameData.ftVal) / Math.log(2)
+  gameData.rawUVarVal = (Math.log(gameData.ftVal + 2) / Math.log(2)) * ((Math.log(gameData.studyPoint + 2) / Math.log(2)) ** gameData.res8Boost)
 }
 
 function time() {
