@@ -4,6 +4,12 @@ This is the link for the game: https://mikosss.github.io/FunctionOfTime/
 
 <h1>Update Logs:</h1>
 <dl>
+  <dt>Version pre-release 0.0.0 d-29 (8/13/21): </dt>
+    <dd>
+      -Research 7 nerfed.
+      <br>
+      -Research 8 added.  
+    </dd>
   <dt>Version pre-release 0.0.0 d-27 (8/11/21): </dt>
     <dd>
       -Interval changing fixed.
