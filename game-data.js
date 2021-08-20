@@ -30,6 +30,7 @@ var gameData = {
     resAdditive: 0,
     res01Amt: 0,
     res01Cost: 100000,
+    res01CostMult: 1.2,
     res02Cost: 100000,
     res03Amt: 0,
     res03Cost: 100000,
@@ -56,7 +57,12 @@ var gameData = {
     res7Cost: 10000,
     res8Boost: 0,
     res8Amt: 0,
-    res8Cost: 250000,
+    res8Cost: 50000,
+    res9Boost: 0,
+    res9Amt: 0,
+    res9Cost: 500000,
+    res10Amt: 0,
+    res10Cost: 1,
 }
 
 //layer:0
@@ -74,7 +80,10 @@ document.getElementById("uText3").style.display = "none"
 document.getElementById("researchTabText").style.display = "none"   //research
 document.getElementById("researchTab").style.display = "none"
 document.getElementById("res3Text").style.display = "none"
-document.getElementById("res7Text").style.display = "none"
+document.getElementById("res7Text").style.display = "none"          
+document.getElementById("machTab").style.display = "none"           //machines
+document.getElementById("machSubTab").style.display = "none" 
+document.getElementById("machTabText").style.display = "none"
 document.getElementById("fogTab").style.display = "none"            //layer:2
 document.getElementById("fohTab").style.display = "none"            //layer:3
 
@@ -249,6 +258,38 @@ function buttonColor() {
         document.getElementById("res8").style.backgroundColor = "#7CFC00"
         document.getElementById("res8").style.cursor = "default"
     }
+    if (gameData.studyPoint >= gameData.res9Cost) {
+        document.getElementById("res9").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res9").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res9Cost) {
+        document.getElementById("res9").style.backgroundColor = "#808080"
+        document.getElementById("res9").style.cursor = "default"
+    }
+    if (gameData.res9Amt >= 1) {
+        document.getElementById("res9").style.backgroundColor = "#7CFC00"
+        document.getElementById("res9").style.cursor = "default"
+        if (gameData.ftVal >= gameData.res01Cost) {
+            document.getElementById("res0.1").style.backgroundColor = "#FFFFFF"
+            document.getElementById("res0.1").style.cursor = "pointer"
+        }
+        if (gameData.ftVal < gameData.res01Cost) {
+            document.getElementById("res0.1").style.backgroundColor = "#808080"
+            document.getElementById("res0.1").style.cursor = "default"
+        }
+    }
+    if (gameData.studyPoint >= gameData.res10Cost) {
+        document.getElementById("res10").style.backgroundColor = "#FFFFFF"
+        document.getElementById("res10").style.cursor = "pointer"
+    }
+    if (gameData.studyPoint < gameData.res10Cost) {
+        document.getElementById("res10").style.backgroundColor = "#808080"
+        document.getElementById("res10").style.cursor = "default"
+    }
+    if (gameData.res10Amt >= 1) {
+        document.getElementById("res10").style.backgroundColor = "#7CFC00"
+        document.getElementById("res10").style.cursor = "default"
+    }
 }
 
 function unlocks() {
@@ -263,9 +304,9 @@ function unlocks() {
     if (gameData.ftVal >= 100000) {
         document.getElementById("researchTabText").style.display = "inline"
         document.getElementById("researchTab").style.display = "inline"
+        document.getElementById("machTab").style.display = "inline"
         document.getElementById("unlockResearchTabText").style.display = "none"
         document.getElementById("unlockResearch").style.display = "none"
-        document.getElementById("fogTab").style.display = "inline"
     }
     if (gameData.ftVal >= 1000000) {
         document.getElementById("dVarRow").style.display = "table-row"
@@ -307,6 +348,18 @@ function unlocks() {
     if (gameData.res8Amt >= 1) {
         document.getElementById("res8").disabled = true;
     }
+    if (gameData.res9Amt >= 1) {
+        document.getElementById("res9").disabled = true;
+        document.getElementById("res0.1").disabled = false;
+        document.getElementById("res01Cap").style.display = "none"
+    }
+    if (gameData.res10Amt >= 1) {
+        document.getElementById("res10").disabled = true;
+        document.getElementById("machSubTab").style.display = "block" 
+        document.getElementById("machTabText").style.display = "inline"
+        document.getElementById("machPreText").style.display = "none"
+        document.getElementById("unlockMachTabText").style.display = "none"
+    }
 }
 
 function overallDisplay() {
@@ -346,6 +399,9 @@ function overallDisplay() {
     document.getElementById("dispRes5Cost").innerHTML = displayNum(Math.round(gameData.res5Cost*100)/100)
     document.getElementById("dispRes6Cost").innerHTML = displayNum(Math.round(gameData.res6Cost*100)/100)
     document.getElementById("dispRes7Cost").innerHTML = displayNum(Math.round(gameData.res7Cost*100)/100)
+    document.getElementById("dispRes8Cost").innerHTML = displayNum(Math.round(gameData.res8Cost*100)/100)
+    document.getElementById("dispRes9Cost").innerHTML = displayNum(Math.round(gameData.res9Cost*100)/100)
+    document.getElementById("dispRes10Cost").innerHTML = displayNum(Math.round(gameData.res10Cost*100)/100)
 }
 
 function displayNum(num) {

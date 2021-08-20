@@ -13,12 +13,12 @@ function study() {
 
 function resVal() {
     gameData.resAdditive = gameData.studyPower
-    gameData.studyPower = gameData.rawStudyPower * ((Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost) * (gameData.studySpeedBoost**gameData.res7Boost)
+    gameData.studyPower = gameData.rawStudyPower * ((Math.sqrt(Math.log10(gameData.time+10)))**gameData.res4Boost) * (gameData.studySpeedBoost**gameData.res7Boost) * (gameData.studyChanceBoost**gameData.res9Boost)
     gameData.resBooster = (1 + gameData.res1Boost) + (gameData.res6Boost * gameData.res1Amt)
     gameData.res1Booster = 1 + (gameData.res6Boost * 100) 
 }
 
-function resSpeed() {
+function resBoost() {
     if (gameData.rawStudySpeed > 50) {
         gameData.studySpeed = gameData.rawStudySpeed
         gameData.studySpeedBoost = 1
@@ -27,14 +27,26 @@ function resSpeed() {
         gameData.studySpeed = 50
         gameData.studySpeedBoost = 50 / gameData.rawStudySpeed
     }
+    if (gameData.studyChance <= 100) {
+        gameData.studyChanceBoost = 1
+    }
+    if (gameData.studyChance > 100) {
+        gameData.studyChanceBoost = gameData.studyChance / 100
+    }
 }
 
-function res03CostEffect() {
+function costEffect() {
     if (gameData.res03Amt <= 59) {
         gameData.res03CostMult = 1.2
     }
     if (gameData.res03Amt > 59) {
         gameData.res03CostMult = 1.2 * (gameData.res03Amt - 59)
+    }
+    if (gameData.res01Amt <= 30) {
+        gameData.res01CostMult = 1.2
+    }
+    if (gameData.res01Amt > 30) {
+        gameData.res01CostMult = 1.2 * (gameData.res01Amt / 30)
     }
 }
 
@@ -42,7 +54,7 @@ function res01() {
     if (gameData.ftVal >= gameData.res01Cost) {
         gameData.ftVal -= gameData.res01Cost
         gameData.studyChance += 1
-        gameData.res01Cost *= 1.2
+        gameData.res01Cost *= gameData.res01CostMult
         gameData.res01Amt += 1
     }
 }
@@ -128,10 +140,25 @@ function res8() {
     }
 }
 
+function res9() {
+    if (gameData.studyPoint >= gameData.res9Cost) {
+        gameData.studyPoint -= gameData.res9Cost
+        gameData.res9Boost += 1
+        gameData.res9Amt += 1
+    }
+}
+
+function res10() {
+    if (gameData.studyPoint >= gameData.res10Cost) {
+        gameData.studyPoint -= gameData.res10Cost
+        gameData.res10Amt += 1
+    }
+}
+
 var displayGameLoop = window.setInterval(function() {
     resVal()
-    resSpeed()
-    res03CostEffect()
+    resBoost()
+    costEffect()
   }, 1)
 
 var resStudyGameLoop = function() {

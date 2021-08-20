@@ -15,7 +15,12 @@
     border-top: none;
   }
   
-.subtabcontent {
+.funcTabcontent {
+  display: none;
+  border-top: none;
+}
+  
+.machTabcontent {
   display: none;
   border-top: none;
 }

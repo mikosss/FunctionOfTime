@@ -46,7 +46,6 @@ function dVarUp() {
 function uVarUp() {
    if (gameData.rawUVarVal >= gameData.uVarVal) {
      gameData.uVarVal *= gameData.multUVarVal
-     gameData.ftVal = 1 
      gameData.additive = 0
      gameData.rawAVarVal = 0
      gameData.aVarCost = 1
@@ -56,6 +55,7 @@ function uVarUp() {
      gameData.cVarCost = 10000
      gameData.rawDVarVal = 1
      gameData.dVarCost = 1000000
+     gameData.ftVal = 1 
    }
 }
 

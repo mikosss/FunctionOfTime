@@ -19,7 +19,14 @@ body {
     cursor: pointer;
 }
 
-.subtablinks {
+.funcTablinks {
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.machTablinks {
     font-size: 18px;
     border-radius: 5px;
     padding: 3px;

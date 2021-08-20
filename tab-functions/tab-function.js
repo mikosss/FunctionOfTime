@@ -18,24 +18,45 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   }
+  
+function openFuncTab(evt, funcTabName) {
+  // Declare all variables
+  var i, funcTabcontent, funcTablinks;
 
-function opensubTab(evt, subtabName) {
+  // Get all elements with class="tabcontent" and hide them
+  funcTabcontent = document.getElementsByClassName("funcTabcontent");
+  for (i = 0; i < funcTabcontent.length; i++) {
+    funcTabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  funcTablinks = document.getElementsByClassName("funcTablinks");
+  for (i = 0; i < funcTablinks.length; i++) {
+    funcTablinks[i].className = funcTablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(funcTabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function openMachTab(evt, machTabName) {
     // Declare all variables
-    var i, subtabcontent, subtablinks;
+    var i, machTabcontent, machTablinks;
   
     // Get all elements with class="tabcontent" and hide them
-    subtabcontent = document.getElementsByClassName("subtabcontent");
-    for (i = 0; i < subtabcontent.length; i++) {
-      subtabcontent[i].style.display = "none";
+    machTabcontent = document.getElementsByClassName("machTabcontent");
+    for (i = 0; i < machTabcontent.length; i++) {
+      machTabcontent[i].style.display = "none";
     }
   
     // Get all elements with class="tablinks" and remove the class "active"
-    subtablinks = document.getElementsByClassName("subtablinks");
-    for (i = 0; i < subtablinks.length; i++) {
-      subtablinks[i].className = subtablinks[i].className.replace(" active", "");
+    machTablinks = document.getElementsByClassName("machTablinks");
+    for (i = 0; i < machTablinks.length; i++) {
+      machTablinks[i].className = machTablinks[i].className.replace(" active", "");
     }
   
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(subtabName).style.display = "block";
+    document.getElementById(machTabName).style.display = "block";
     evt.currentTarget.className += " active";
   }

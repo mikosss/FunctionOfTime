@@ -17,19 +17,20 @@
     </div>
     <br>
     <div style="text-align:center;">
-        <button class="tablinks" onclick="openTab(event, 'Functions')">Functions</button>
-        <button class="tablinks" onclick="openTab(event, 'Research')"><span id="unlockResearchTabText"> --- </span><span id="researchTabText">Research</span></span></button>
-        <button class="tablinks" onclick="openTab(event, 'Options')">Options</button>
+        <button id="funcTab" class="tablinks" onclick="openTab(event, 'Functions')">Functions</button>
+        <button id="resTab" class="tablinks" onclick="openTab(event, 'Research')"><span id="unlockResearchTabText"> --- </span><span id="researchTabText">Research</span></button>
+        <button id="machTab" class="tablinks" onclick="openTab(event, 'Machines')"><span id="unlockMachTabText"> --- </span><span id="machTabText">Machine</span></button>
+        <button id="opTab" class="tablinks" onclick="openTab(event, 'Options')">Options</button>
     </div>
     <br>
     <div id="Functions" class="tabcontent">
         <div style="text-align:center;">
-            <button id="fofTab" class="subtablinks" onclick="opensubTab(event, 'FunctionF')">Function of "f"</button>
-            <button id="fogTab" class="subtablinks" onclick="opensubTab(event, 'FunctionG')">---</button>
-            <button id="fohTab" class="subtablinks" onclick="opensubTab(event, 'FunctionH')">---</button>
+            <button id="fofTab" class="funcTablinks" onclick="openFuncTab(event, 'FunctionF')">Function of "f"</button>
+            <button id="fogTab" class="funcTablinks" onclick="openFuncTab(event, 'FunctionG')">---</button>
+            <button id="fohTab" class="funcTablinks" onclick="openFuncTab(event, 'FunctionH')">---</button>
         </div>
         <br>
-        <div id="FunctionF" class="subtabcontent">
+        <div id="FunctionF" class="funcTabcontent">
             <div class="formula">f(t+<span id="uText4">1</span><span id="uText1">u</span>) = f(t) + a<span id="bText">b</span><span id="cText">c</span><span id="dText">d</span><span id="uText2">u</span><span id="res3Text">×log(t+10)</span></div>
             <div style="text-align: center;">f(t) → f(t+<span id="uText5">1</span><span id="uText3">u</span>) = 1 tick</div>
             <div style="text-align: center;">t = <span id="dispTime">0</span></div>
@@ -67,10 +68,10 @@
                 </table>
             </div>
         </div>
-        <div id="FunctionG" class="subtabcontent">
+        <div id="FunctionG" class="funcTabcontent">
             comming soon...
         </div>
-        <div id="FunctionH" class="subtabcontent">
+        <div id="FunctionH" class="funcTabcontent">
             comming soon :c
         </div>
     </div>
@@ -85,8 +86,8 @@
             <div style="text-align: center; font-size: 16px;">
                 Study Speed: <span id="studySpeed">1,000</span>ms
                 <br>
-                <span id="res7Text">Study Speed Boost: ×<span id="studySpeedBoost">1</span></span>
-                <br>
+                <span id="res7Text">Study Speed Boost: ×<span id="studySpeedBoost">1</span><br></span>
+                
                 Study Chance: <span id="studyChance">20</span>% <span id="lazyText">- cuz u lazy 3:)</span>
                 <div id="dispStudy"></div>
             </div>
@@ -94,7 +95,7 @@
             <div>
                 <table class="resTable">
                     <tr>
-                        <td><button onclick="res01()" class="researchButton" id="res0.1"><b>Upgrade 1:</b><br>+1% Study Chance<br>-f(t) = <span id="dispRes01Cost">100,000</span><br>(<span id="res01Amt">0</span>/30)</button></td>
+                        <td><button onclick="res01()" class="researchButton" id="res0.1"><b>Upgrade 1:</b><br>+1% Study Chance<br>-f(t) = <span id="dispRes01Cost">100,000</span><br><span id="res01Cap">(<span id="res01Amt">0</span>/30)</span></button></td>
                         <td><button onclick="res02()" class="researchButton" id="res0.2"><b>Upgrade 2:</b><br>+0.5 Study Power<br>-f(t) = <span id="dispRes02Cost">100,000</span></button></td>
                         <td><button onclick="res03()" class="researchButton" id="res0.3"><b>Upgrade 3:</b><br>×0.95 Study Speed<br>-f(t) = <span id="dispRes03Cost">100,000</span><br><span id="res03Cap">(<span id="res03Amt">0</span>/59)</span></button></td>
                     </tr>
@@ -110,9 +111,9 @@
                     <tr>
                         <td><button onclick="res6()" class="researchButton" id="res6"><b>Research 6:</b><br>+0.5% Research 1 power<br>-<span id="dispRes6Cost">5,000</span> Study Points</button></td>
                         <td><button onclick="res7()" class="researchButton" id="res7"><b>Research 7:</b><br>Upgrade 3 cap is removed. Instead of decreasing the study speed, it will increase the study power. (Cost will increase exponentially & cap is still 50ms.)<br>-<span id="dispRes7Cost">10,000</span> Study Points</button></td>
-                        <td><button onclick="res8()" class="researchButton" id="res8"><b>Research 8:</b><br>The amount of study points will affect the amount of gained "u" variable.<br>-<span id="dispRes8Cost">250,000</span> Study Points</button></td>
-                        <td><button class="researchButton" id="res9">RESEARCH 9</button></td>
-                        <td><button class="researchButton" id="res10">RESEARCH 10</button></td>
+                        <td><button onclick="res8()" class="researchButton" id="res8"><b>Research 8:</b><br>The amount of study points will affect the amount of gained "u" variable.<br>-<span id="dispRes8Cost">50,000</span> Study Points</button></td>
+                        <td><button onclick="res9()" class="researchButton" id="res9"><b>Research 9:</b><br>Upgrade 1 cap is removed. When the chance is higher than 100% it will boost study power. The cost will slightly increase exponentially.<br>-<span id="dispRes9Cost">500,000</span> Study Points</button></td>
+                        <td><button onclick="res10()" class="researchButton" id="res10"><b>Research 10:</b><br>Unlock Machines.<br>-<span id="dispRes10Cost">1,000,000</span> Study Points</button></td>
                     </tr>
                     <tr>
                         <td><button class="researchButton" id="res11">RESEARCH 11</button></td>
@@ -125,10 +126,27 @@
             </div>
         </div>
     </div>
+    <div id="Machines" class="tabcontent">
+        <div id="machPreText" style="text-align:center;">bunch of scarps</div>
+        <div id="machSubTab" style="text-align:center;">
+            <button id="timeMach" class="machTablinks" onclick="openMachTab(event, 'TimeMachine')">Time Machine</button>
+            <button id="studyMach" class="machTablinks" onclick="openMachTab(event, 'StudyMachine')">Study Machine</button>
+            <button id="autoMach" class="machTablinks" onclick="openMachTab(event, 'AutomationMachine')">Automation Machine</button>
+        </div>
+        <div id="TimeMachine" class="machTabcontent">
+            This machine is tired of waiting.
+        </div>
+        <div id="StudyMachine" class="machTabcontent">
+            Bunch of studying scraps...
+        </div>
+        <div id="AutomationMachine" class="machTabcontent">
+            Bunch of automation scraps...
+        </div>
+    </div>
     <div id="Options" class="tabcontent">
         Options
         <br>
-        version pre-release 0.0.0 d-29
+        version pre-release 0.0.0 d-36
     </div>
     <script src="tab-functions/tab-function.js" charset="utf-8" type="text/javascript"></script>
     <script src="game-data.js" charset="utf-8" type="text/javascript"></script>
