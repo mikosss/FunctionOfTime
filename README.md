@@ -1,9 +1,23 @@
 # FunctionOfTime (FoT)
+<br>
 This is my first ever game that i made!!!
+<br>
 This is the link for the game: https://mikosss.github.io/FunctionOfTime/
 
 <h1>Update Logs:</h1>
 <dl>
+  <dt>Version pre-release 0.0.0 d-36 (8/20/21): </dt>
+    <dd>
+      -Research 9 added.
+      <br>
+      -Research 10 added.
+      <br>
+      -Added machines (currenty not working)
+      <br>
+      -Fixed tab function.
+      <br>
+      -Fixed "u" variable error.
+    </dd>
   <dt>Version pre-release 0.0.0 d-29 (8/13/21): </dt>
     <dd>
       -Research 7 nerfed.
