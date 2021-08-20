@@ -1,5 +1,4 @@
 # FunctionOfTime (FoT)
-<br>
 This is my first ever game that i made!!!
 <br>
 This is the link for the game: https://mikosss.github.io/FunctionOfTime/
@@ -16,7 +15,7 @@ This is the link for the game: https://mikosss.github.io/FunctionOfTime/
       <br>
       -Fixed tab function.
       <br>
-      -Fixed "u" variable error.
+      -Fixed "u" variable bug.
     </dd>
   <dt>Version pre-release 0.0.0 d-29 (8/13/21): </dt>
     <dd>
