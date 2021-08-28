@@ -5,6 +5,12 @@ This is the link for the game: https://mikosss.github.io/FunctionOfTime/
 
 <h1>Update Logs:</h1>
 <dl>
+  <dt>Version pre-release 0.0.0 d-44 (8/28/21): </dt>
+    <dd>
+      -Time Machine added.
+      <br>
+      -Tickspeed function changed.
+    </dd>
   <dt>Version pre-release 0.0.0 d-36 (8/20/21): </dt>
     <dd>
       -Research 9 added.
