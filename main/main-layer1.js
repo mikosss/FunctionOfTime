@@ -8,7 +8,18 @@ function val() {
 }
 
 function time() {
-  gameData.time += gameData.timespeed * gameData.uVarVal
+  gameData.time += gameData.timespeed * gameData.uVarVal * gameData.ftTickspeedBoost
+}
+
+function ftTickBoost() {
+  if (gameData.rawTickspeed > 50) {
+      gameData.tickspeed = gameData.rawTickspeed
+      gameData.ftTickspeedBoost = 1
+  }
+  if (gameData.rawTickspeed <= 50) {
+      gameData.tickspeed = 50
+      gameData.ftTickspeedBoost = 50 / gameData.rawTickspeed
+  }
 }
 
 function aVarUp() {
@@ -61,6 +72,7 @@ function uVarUp() {
 
 var displayGameLoop = window.setInterval(function() {
     val()
+    ftTickBoost()
   }, 1)
 
 var timeGameLoop = function() {

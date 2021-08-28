@@ -13,7 +13,7 @@
         <br>
         (+<span id="dispAdditive">0</span>/tick)
         <br>
-        Tickspeed = <span id="dispTickspeed">1,000</span> ms
+        Tickspeed = <span id="dispRawTickspeed">1,000</span> ms
     </div>
     <br>
     <div style="text-align:center;">
@@ -134,7 +134,34 @@
             <button id="autoMach" class="machTablinks" onclick="openMachTab(event, 'AutomationMachine')">Automation Machine</button>
         </div>
         <div id="TimeMachine" class="machTabcontent">
-            This machine is tired of waiting.
+            <br>
+            <div style="text-align: center;">This machine is tired of waiting.</div>
+            <img src="Additional Files/Time Machine.png" alt="This is a time machine." class="machine">
+            <table id="timeMachTable">
+                <tr>
+                    <td>
+                        <button class="tmContent1" id="tmfGenUp" onclick="tmfGen()">
+                        Increase time machine fragment (TMF) generator's power.
+                        <br>
+                        -f(t) = <span id="dispTmfGenCost">1</span>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="tmContent1" id="timeMachUp" onclick="timeMachUp()">
+                        ×0.98 tickspeed
+                        <br>
+                        - <span id="dispTimeMachCost">1</span> TMF
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tmContent2" colspan="2">
+                        You have: <span id=dispTmf>0</span> TMF
+                        <br>
+                        +<span id="dispTmfAdditive">0</span> TMF / second
+                    </td>
+                </tr>
+            </table>
         </div>
         <div id="StudyMachine" class="machTabcontent">
             Bunch of studying scraps...
@@ -153,5 +180,6 @@
     <script src="main/main-layer0.js" charset="utf-8" type="text/javascript"></script>
     <script src="main/main-layer1.js" charset="utf-8" type="text/javascript"></script>
     <script src="main/main-research.js" charset="utf-8" type="text/javascript"></script>
+    <script src="main/main-machine.js" charset="utf-8" type="text/javascript"></script>
 </body>
 </html>

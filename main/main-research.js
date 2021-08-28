@@ -88,7 +88,7 @@ function res1() {
 function res2() {
     if (gameData.studyPoint >= gameData.res2Cost) {
         gameData.studyPoint -= gameData.res2Cost
-        gameData.tickspeed *= 0.9
+        gameData.rawTickspeed *= 0.9
         gameData.res2Amt += 1
     }
 }

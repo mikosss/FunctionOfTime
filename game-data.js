@@ -1,9 +1,11 @@
 var gameData = {
     ftVal: 1,                       //layer:0
     additive: 0,
+    rawTickspeed: 1000,
     tickspeed: 1000,
     time: 0,                        //layer:1
     timespeed: 1,
+    ftTickspeedBoost: 1,
     aVarVal: 0,
     rawAVarVal: 0,
     aVarCost: 1,
@@ -63,6 +65,11 @@ var gameData = {
     res9Cost: 500000,
     res10Amt: 0,
     res10Cost: 1,
+    tmf: 0,                         //machine
+    tmfAdditive: 0,
+    tmfGenCost: 1,
+    tmfGenBoost: 0,
+    timeMachCost: 1,
 }
 
 //layer:0
@@ -290,6 +297,22 @@ function buttonColor() {
         document.getElementById("res10").style.backgroundColor = "#7CFC00"
         document.getElementById("res10").style.cursor = "default"
     }
+    if (gameData.ftVal >= gameData.tmfGenCost) {
+        document.getElementById("tmfGenUp").style.backgroundColor = "#FFFFFF"
+        document.getElementById("tmfGenUp").style.cursor = "pointer"
+    }
+    if (gameData.ftVal < gameData.tmfGenCost) {
+        document.getElementById("tmfGenUp").style.backgroundColor = "#808080"
+        document.getElementById("tmfGenUp").style.cursor = "default"
+    }
+    if (gameData.tmf >= gameData.timeMachCost) {
+        document.getElementById("timeMachUp").style.backgroundColor = "#FFFFFF"
+        document.getElementById("timeMachUp").style.cursor = "pointer"
+    }
+    if (gameData.tmf < gameData.timeMachCost) {
+        document.getElementById("timeMachUp").style.backgroundColor = "#808080"
+        document.getElementById("timeMachUp").style.cursor = "default"
+    }
 }
 
 function unlocks() {
@@ -366,7 +389,7 @@ function overallDisplay() {
     document.getElementById("dispftVal").innerHTML = displayNum(Math.round(gameData.ftVal*100)/100)
     document.getElementById("dispAdditive").innerHTML = displayNum(Math.round(gameData.additive*100)/100)
     document.getElementById("dispTime").innerHTML = displayNum(Math.round(gameData.time*100)/100)
-    document.getElementById("dispTickspeed").innerHTML = gameData.tickspeed
+    document.getElementById("dispRawTickspeed").innerHTML = Math.round(gameData.rawTickspeed*100)/100
     document.getElementById("dispRawAVarVal").innerHTML = displayNum(Math.round(gameData.rawAVarVal*100)/100)
     document.getElementById("dispRawBVarVal").innerHTML = displayNum(Math.round(gameData.rawBVarVal*100)/100)
     document.getElementById("dispRawCVarVal").innerHTML = displayNum(Math.round(gameData.rawCVarVal*100)/100)
@@ -402,6 +425,11 @@ function overallDisplay() {
     document.getElementById("dispRes8Cost").innerHTML = displayNum(Math.round(gameData.res8Cost*100)/100)
     document.getElementById("dispRes9Cost").innerHTML = displayNum(Math.round(gameData.res9Cost*100)/100)
     document.getElementById("dispRes10Cost").innerHTML = displayNum(Math.round(gameData.res10Cost*100)/100)
+    document.getElementById("dispTmf").innerHTML = displayNum(Math.round(gameData.tmf*100)/100)
+    document.getElementById("dispTmfAdditive").innerHTML = displayNum(Math.round(gameData.tmfAdditive*100)/100)
+    document.getElementById("dispTmfGenCost").innerHTML = displayNum(Math.round(gameData.tmfGenCost*100)/100)
+    document.getElementById("dispTimeMachCost").innerHTML = displayNum(Math.round(gameData.timeMachCost*100)/100)
+
 }
 
 function displayNum(num) {
